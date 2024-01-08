@@ -2,7 +2,6 @@
 
 import { ChevronsLeftRight } from 'lucide-react'
 import { forwardRef, Ref } from 'react'
-
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
@@ -12,8 +11,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
+import { ModeToggle } from '@/components/mode-toggle'
 
 export const UserItem = () => {
+  const router = useRouter()
+
+  const logout = () => {
+    router.push('/')
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -38,10 +46,16 @@ export const UserItem = () => {
         alignOffset={11}
         forceMount
       >
-        <div className="flex flex-col space-y-4 p-2">
-          <p className="text-xs font-medium leading-none text-muted-foreground">
-            {'diego.salazar@grupomok.com'}
-          </p>
+        <div className="flex flex-col space-y-4 p-1 ">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium leading-none text-muted-foreground">
+              {'Perfil - Sura Compañia'}
+            </p>
+            <div>
+              <ModeToggle />
+            </div>
+          </div>
+
           <div className="flex items-center gap-x-2">
             <div className="rounded-md bg-secondary p-1">
               <Avatar className="h-8 w-8">
@@ -49,11 +63,21 @@ export const UserItem = () => {
               </Avatar>
             </div>
             <div className="space-y-1">
-              <p className="text-sm line-clamp-1">{'adasda'}&apos;s Notion</p>
+              <p className="text-sm line-clamp-1">{'Diego Salazar Arp'}</p>
+              <p className="text-xs antialiased">Analista Programador</p>
+              <p className="text-xs antialiased">diego.salazar@grupomok.com</p>
             </div>
           </div>
         </div>
         <DropdownMenuSeparator />
+
+        <Button
+          onClick={logout}
+          className="mx-auto w-full hover:bg-red-900 hover:text-white"
+          variant={'outline'}
+        >
+          Cerrar Sesion
+        </Button>
         <DropdownMenuItem
           asChild
           className="w-full cursor-pointer text-muted-foreground"

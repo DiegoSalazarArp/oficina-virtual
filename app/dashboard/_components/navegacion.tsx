@@ -10,12 +10,15 @@ import {
   Settings,
   Trash,
 } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { useParams, usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import UserItem from './user-item'
+import Link from 'next/link'
+import Menu from './menu'
 
 export default function Navegacion() {
+  const params = useParams()
   const pathname = usePathname()
   const isMobile = useMediaQuery('(max-width: 768px)')
 
@@ -97,6 +100,28 @@ export default function Navegacion() {
     }
   }
 
+  const menuItems = [
+    { label: 'Home', href: '/dashboard' },
+    {
+      label: 'Denuncia',
+      href: '/perfil',
+      subitems: [
+        {
+          label: 'Denuncia Asegurado Companiaadasdas',
+          href: '/perfil/subitem1',
+        },
+        { label: 'Denuncia Pago Convenio', href: '/perfil/subitem2' },
+      ],
+    },
+    {
+      label: 'Configuración',
+      href: '/configuracion',
+      subitems: [
+        { label: 'Subitem 4', href: '/perfil/subitem1' },
+        { label: 'Subitem 5', href: '/perfil/subitem2' },
+      ],
+    },
+  ]
   return (
     <>
       <aside
@@ -121,6 +146,9 @@ export default function Navegacion() {
           <UserItem />
         </div>
         <div className="mt-4">
+          <Menu menuItems={menuItems} />
+        </div>
+        <div>
           <div
             onMouseDown={handleMouseDown}
             onClick={resetWidth}
