@@ -25,7 +25,10 @@ const Menu: React.FC<MenuProps> = ({ menuItems }) => {
   return (
     <div className="py-1 text-sm w-full min-h-[27px] text-muted-foreground font-medium ">
       {menuItems.map((item) => (
-        <div key={item.label} className="cursor-pointer py-[1px] ">
+        <div
+          className="cursor-pointer py-[1px] transition-all"
+          key={item.label}
+        >
           {item.subitems ? (
             <>
               <div role="button" onClick={() => handleExpand(item.label)}>
@@ -41,11 +44,14 @@ const Menu: React.FC<MenuProps> = ({ menuItems }) => {
                 </div>
               </div>
               {isExpanded(item.label) && (
-                <div className=" text-muted-foreground font-medium">
+                <div
+                  key={item.label}
+                  className=" text-muted-foreground font-medium"
+                >
                   {item.subitems.map((subitem) => (
-                    <Link href={subitem.href!}>
+                    <Link key={subitem.label} href={subitem.href!}>
                       <div className="hover:bg-primary/5 hover:text-black dark:hover:text-white py-[1px]">
-                        <div key={subitem.label} className="ml-10 truncate">
+                        <div className="ml-10 truncate">
                           <span className="text-sm">{subitem.label}</span>
                         </div>
                       </div>

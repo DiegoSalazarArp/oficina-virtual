@@ -1,20 +1,11 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import {
-  ChevronsLeft,
-  MenuIcon,
-  Plus,
-  PlusCircle,
-  Search,
-  Settings,
-  Trash,
-} from 'lucide-react'
+import { ChevronsLeft, MenuIcon } from 'lucide-react'
 import { useParams, usePathname } from 'next/navigation'
 import { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import UserItem from './user-item'
-import Link from 'next/link'
 import Menu from './menu'
 
 export default function Navegacion() {
@@ -22,9 +13,9 @@ export default function Navegacion() {
   const pathname = usePathname()
   const isMobile = useMediaQuery('(max-width: 768px)')
 
+  const isResizingRef = useRef(false)
   const sidebarRef = useRef<ElementRef<'aside'>>(null)
   const navbarRef = useRef<ElementRef<'div'>>(null)
-  const isResizingRef = useRef(false)
 
   const [isReseting, setIsReseting] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(isMobile)
@@ -68,7 +59,6 @@ export default function Navegacion() {
       setTimeout(() => setIsReseting(false), 300)
     }
   }
-
   const handleMouseMove = (event: MouseEvent) => {
     if (!isResizingRef.current) return
 
@@ -87,7 +77,6 @@ export default function Navegacion() {
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseUp)
   }
-
   const collapse = () => {
     if (sidebarRef.current && navbarRef.current) {
       setIsCollapsed(true)
@@ -104,11 +93,11 @@ export default function Navegacion() {
     { label: 'Home', href: '/dashboard' },
     {
       label: 'Denuncia',
-      href: '/perfil',
+      href: '/denuncia',
       subitems: [
         {
-          label: 'Denuncia Asegurado Companiaadasdas',
-          href: '/perfil/subitem1',
+          label: 'Denuncia Asegurado ',
+          href: '/dashboard/denuncia',
         },
         { label: 'Denuncia Pago Convenio', href: '/perfil/subitem2' },
       ],
@@ -122,8 +111,9 @@ export default function Navegacion() {
       ],
     },
   ]
+
   return (
-    <>
+    <div>
       <aside
         ref={sidebarRef}
         className={cn(
@@ -177,6 +167,6 @@ export default function Navegacion() {
           )}
         </nav>
       </div>
-    </>
+    </div>
   )
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import Navegacion from './_components/navegacion'
 
 export default function DashboardLayout({
