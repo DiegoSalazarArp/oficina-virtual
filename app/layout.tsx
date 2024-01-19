@@ -3,6 +3,7 @@ import { Figtree } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import ModalProvider from '@/components/providers/modal-provider'
+import { Toaster } from 'sonner'
 
 const figTree = Figtree({ subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           storageKey="ofv-theme-2"
         >
           <ModalProvider />
+          <Toaster richColors position="bottom-center" />
 
           {children}
         </ThemeProvider>

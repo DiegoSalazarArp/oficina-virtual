@@ -97,9 +97,12 @@ export default function Navegacion() {
       subitems: [
         {
           label: 'Denuncia Asegurado ',
-          href: '/dashboard/denuncia',
+          href: '/dashboard/denuncia/crear',
         },
-        { label: 'Denuncia Pago Convenio', href: '/perfil/subitem2' },
+        {
+          label: 'Denuncia Pago Convenio',
+          href: '/dashboard/denuncia/pagoconvenio',
+        },
       ],
     },
     {
