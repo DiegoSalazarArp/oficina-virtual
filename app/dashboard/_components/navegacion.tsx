@@ -106,12 +106,24 @@ export default function Navegacion() {
       ],
     },
     {
-      label: 'Configuración',
-      href: '/configuracion',
+      label: 'Gastos y Siniestralidad',
+      href: '/gastos',
       subitems: [
-        { label: 'Subitem 4', href: '/perfil/subitem1' },
-        { label: 'Subitem 5', href: '/perfil/subitem2' },
+        { label: 'Gastos por asegurado', href: '/dashboard/gastos/asegurado' },
+        {
+          label: 'Siniestros por mes/cobertura',
+          href: '/dashboard/gastos/siniestro-mes',
+        },
+        {
+          label: 'Siniestro cobertura',
+          href: '/dashboard/gastos/siniestro-cobertura',
+        },
       ],
+    },
+    { label: 'Formularios y documentos', href: '/dashboard/formularios' },
+    {
+      label: 'Solicitud por beneficiario',
+      href: '/dashboard/solicitud',
     },
   ]
 
