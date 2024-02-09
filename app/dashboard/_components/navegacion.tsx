@@ -125,6 +125,16 @@ export default function Navegacion() {
       label: 'Solicitud por beneficiario',
       href: '/dashboard/solicitud',
     },
+    {
+      label: 'Sistema Liquidación',
+      href: '/liquidacion',
+      subitems: [
+        {
+          label: 'Ingreso',
+          href: '/dashboard/liquidacion/ingreso'
+        }
+      ]
+    }
   ]
 
   return (
